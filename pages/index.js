@@ -2,8 +2,22 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import { useQuery } from 'urql'
+import { PRODUCT_QUERY } from '../lib/query'
+import Product from '../components/Products'
 
 export default function Home() {
+
+  const [results]=useQuery({query:PRODUCT_QUERY})
+  console.log(results)
+  const {data, fetching, error}= results
+
+if (fetching)return <p>Loading..</p>
+if (error)return <p>Oh No.....{error.data}</p>
+
+const products = data.products.data
+console.log(products)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,8 +26,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>hello World</h1>
-        <Link href={'/about'}>ClickMe</Link>
+      {products.map((product)=>(
+       <Product  key={product.attributes.Slug} product={product} /> 
+      ))}
+
       </main>
     </div>
   )
