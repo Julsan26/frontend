@@ -1,9 +1,11 @@
+
+import {ProductStyle} from "../styles/ProductStyle"
 export default function Product({product}){
 
 const {title, price , image}= product.attributes
 
     return(
-        <div>
+        <ProductStyle>
             <div>
                 <img src={image.data.attributes.formats.small.url} alt= ""/>
             </div>
@@ -11,7 +13,7 @@ const {title, price , image}= product.attributes
             <h3>{price}</h3>
 
          
-        </div>
+        </ProductStyle>
     )
 }
  

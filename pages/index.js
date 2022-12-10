@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useQuery } from 'urql'
 import { PRODUCT_QUERY } from '../lib/query'
 import Product from '../components/Products'
+import { Gallery } from '../styles/Gallery'
 
 export default function Home() {
 
@@ -26,9 +27,11 @@ console.log(products)
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <Gallery>
       {products.map((product)=>(
        <Product  key={product.attributes.Slug} product={product} /> 
       ))}
+      </Gallery>
 
       </main>
     </div>
