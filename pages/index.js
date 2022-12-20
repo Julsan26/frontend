@@ -7,7 +7,10 @@ import { PRODUCT_QUERY } from '../lib/query'
 import Product from '../components/Products'
 import { Gallery } from '../styles/Gallery'
 
+import Nav from "../components/Nav"
+
 export default function Home() {
+
 
   const [results]=useQuery({query:PRODUCT_QUERY})
   console.log(results)
@@ -20,6 +23,7 @@ const products = data.products.data
 console.log(products)
 
   return (
+
     <div className={styles.container}>
       <Head>
         <title>Style Home Page</title>

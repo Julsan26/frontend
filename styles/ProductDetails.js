@@ -29,10 +29,10 @@ button{
     background: transparent;
     border: none;
     display: flex;
-    fontsiez: 1.5rem;
+    font-size: 1.5rem;
 }
 p{
-    width: 1rem;
+    width: 1.5rem;
     text-align:center;
 
 }
