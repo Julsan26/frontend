@@ -27,8 +27,6 @@ const handleCheckout= async()=>{
     const data = await response.json()
     await stripe.redirectToCheckout({sessionId: data.id})
 }
-
-
     return(
         <CartWrapper onClick={()=>setShowCart(false)}>
             <CartStyle onClick={(e)=>e.stopPropagation()}>

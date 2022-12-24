@@ -5,29 +5,34 @@ const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`)
 
 export default async function handler(req,res){
     if(req.method=="POST"){
-        console.log(req)
+        console.log(req.body)
         try {
-        
 
 
+          const body = JSON.parse(req.body)
+
+
+console.log( "this is the lineitem %v ",body)
+
+    
           const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             shipping_address_collection: {allowed_countries: ['US', 'CA']},
         
-            // line_items: req.body.map(item=>{
-            //     return{
+            line_items: body.map(item=>{
+                return{
 
-            //       price_data:{
-            //           currency: 'usd',
-            //           product_data:{
-            //               name:item.title,
-            //               images: [item.image.data.attributes.formats.thumbnail.url],
-            //           },
-            //           unit_amount:item.price * 100
-            //       },
-            //       quantity:item.quantity,
-            //     }
-            // }),
+                  price_data:{
+                      currency: 'usd',
+                      product_data:{
+                          name:item.title,
+                          images: [item.image.data.attributes.formats.thumbnail.url],
+                      },
+                      unit_amount:item.price * 100
+                  },
+                  quantity:item.quantity,
+                }
+            }),
             mode: 'payment',
             success_url: 'https://example.com/success',
             cancel_url: 'https://example.com/cancel',
