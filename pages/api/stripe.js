@@ -11,9 +11,6 @@ export default async function handler(req,res){
 
           const body = JSON.parse(req.body)
 
-
-console.log( "this is the lineitem %v ",body)
-
     
           const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -34,7 +31,7 @@ console.log( "this is the lineitem %v ",body)
                 }
             }),
             mode: 'payment',
-            success_url: 'https://example.com/success',
+            success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url: 'https://example.com/cancel',
           });
 
