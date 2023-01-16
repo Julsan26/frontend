@@ -4,10 +4,14 @@ import { NavStyle, NavItems } from "../styles/NavStyle";
 import Cart from "./Cart";
 import { useStateContext } from "../lib/context";
 import User from "./User";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { userAgent } from "next/server";
 export default function Nav(){
 
 
     const{showCart, setShowCart, totalQuantities} = useStateContext()
+    const {user, error, isLoading } = useUser()
+    console.log(user)
 
     return(
     <NavStyle>
