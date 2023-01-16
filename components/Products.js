@@ -1,6 +1,11 @@
 
 import {ProductStyle} from "../styles/ProductStyle"
 import Link from "next/link"
+
+
+
+
+
 export default function Product({product}){
 
 const {title, price , image, slug}= product.attributes

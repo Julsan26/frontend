@@ -3,6 +3,7 @@ import {FiShoppingBag} from "react-icons/fi"
 import { NavStyle, NavItems } from "../styles/NavStyle";
 import Cart from "./Cart";
 import { useStateContext } from "../lib/context";
+import User from "./User";
 export default function Nav(){
 
 
@@ -12,6 +13,7 @@ export default function Nav(){
     <NavStyle>
         <Link href={'/'}>Pashmina</Link>
     <NavItems>
+        <User />
         <div onClick={()=>setShowCart(true)}>
             {totalQuantities>0 &&<span>{totalQuantities}</span>}
         <FiShoppingBag/>
